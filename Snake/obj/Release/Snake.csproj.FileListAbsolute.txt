@@ -1,0 +1,10 @@
+C:\Users\davom\source\repos\Game\Snake\obj\Release\Snake.csproj.CoreCompileInputs.cache
+C:\Users\davom\source\repos\Game\Snake\bin\Release\Snake.exe.config
+C:\Users\davom\source\repos\Game\Snake\bin\Release\Snake.exe
+C:\Users\davom\source\repos\Game\Snake\bin\Release\Snake.pdb
+C:\Users\davom\source\repos\Game\Snake\obj\Release\Snake.exe
+C:\Users\davom\source\repos\Game\Snake\obj\Release\Snake.pdb
+C:\Users\davom\source\repos\Game\Snake\bin\Release\Snakelib.dll
+C:\Users\davom\source\repos\Game\Snake\bin\Release\Snakelib.pdb
+C:\Users\davom\source\repos\Game\Snake\obj\Release\Snake.csprojAssemblyReference.cache
+C:\Users\davom\source\repos\Game\Snake\obj\Release\Snake.csproj.CopyComplete

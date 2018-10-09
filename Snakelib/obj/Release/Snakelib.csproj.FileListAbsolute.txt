@@ -1,0 +1,5 @@
+C:\Users\davom\source\repos\Game\Snakelib\bin\Release\Snakelib.dll
+C:\Users\davom\source\repos\Game\Snakelib\bin\Release\Snakelib.pdb
+C:\Users\davom\source\repos\Game\Snakelib\obj\Release\Snakelib.csproj.CoreCompileInputs.cache
+C:\Users\davom\source\repos\Game\Snakelib\obj\Release\Snakelib.dll
+C:\Users\davom\source\repos\Game\Snakelib\obj\Release\Snakelib.pdb
