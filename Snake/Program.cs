@@ -47,6 +47,7 @@ namespace Snake
 
         public void Setup()
         {
+            Console.Title = "Snake Game";
             Console.WindowHeight = 30;
             Console.WindowWidth = 60;
             gameOver = false;
@@ -68,7 +69,6 @@ namespace Snake
             }
             Console.Write($"{new string(' ', 5)}Score:  {score}");
             Console.WriteLine();
-            Console.Title = "Snake mini";
             for (int y = 0; y < Heigth; y++)
             {
                 for (int x = 0; x < Width; x++)
@@ -154,6 +154,7 @@ namespace Snake
             if (snakeX == fruitX && snakeY == fruitY)
             {
                 score+=10;
+                new Thread(Beep).Start();
                 fruitX = r.Next(1, Width - 1);
                 fruitY = r.Next(1, Heigth - 1);
             }
@@ -162,6 +163,8 @@ namespace Snake
                 gameOver = true;
             }
         }
+
+        private void Beep() => Console.Beep();
 
         public bool Win()
         {
