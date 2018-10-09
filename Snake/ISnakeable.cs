@@ -8,11 +8,12 @@ namespace Snake
     {
         void Start();
         void Setup();
-        void Picture();
+        void Drawing();
         void Input();
         void KeyCheck(char key);
         void Logic();
         bool Win();
         void Gameover();
+        void Victory();
     }
 }

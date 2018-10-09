@@ -21,7 +21,7 @@ namespace Snake
         private int fruitY;
         private Keys direction = Keys.Stop;
         private int Heigth { get => 20; }
-        private int Width { get => 20; }
+        private int Width { get => 40; }
         private char arenaChar = '#';
         private char snake = '@';
         private bool gameOver;
@@ -32,12 +32,12 @@ namespace Snake
         {
             while (gameOver != true)
             {
-                //Setup();
-                Picture();
+                Drawing();
                 Input();
                 Logic();
                 if (Win())
                 {
+                    Victory();
                     break;
                 }
                 if (gameOver)
@@ -47,6 +47,8 @@ namespace Snake
 
         public void Setup()
         {
+            Console.WindowHeight = 30;
+            Console.WindowWidth = 60;
             gameOver = false;
             Random rnd = new Random();
             snakeX = Width / 2;
@@ -56,7 +58,7 @@ namespace Snake
             score = 0;
         }
 
-        public void Picture()
+        public void Drawing()
         {
             Console.Clear();
             
@@ -64,7 +66,9 @@ namespace Snake
             {
                 Console.Write(arenaChar);
             }
+            Console.Write($"{new string(' ', 5)}Score:  {score}");
             Console.WriteLine();
+            Console.Title = "Snake mini";
             for (int y = 0; y < Heigth; y++)
             {
                 for (int x = 0; x < Width; x++)
@@ -93,7 +97,7 @@ namespace Snake
             {
                 Console.Write(arenaChar);
             }
-            Thread.Sleep(50);
+            Thread.Sleep(40);
         }
 
         public void Input()
@@ -149,7 +153,7 @@ namespace Snake
             }
             if (snakeX == fruitX && snakeY == fruitY)
             {
-                score++;
+                score+=10;
                 fruitX = r.Next(1, Width - 1);
                 fruitY = r.Next(1, Heigth - 1);
             }
@@ -161,30 +165,111 @@ namespace Snake
 
         public bool Win()
         {
-            if (score == 10)
+            if (score >= 100)
             {
                 return true;
             }
             return false;
         }
 
+        public void Victory()
+        {
+            Console.Clear();
+            Console.WriteLine(new string(arenaChar, 40));
+            for (int y = 0; y < Heigth; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    if (x == 0 || x == Width - 1)
+                    {
+                        Console.Write(arenaChar);
+                    }
+                    else if (x == 8 && y == Heigth / 2 - 2)
+                    {
+                        Console.Write($"You Win. Your Score : {score}");
+                        x += 25;
+                    }
+                    else if (x == 8 && y == Heigth / 2)
+                    {
+                        Console.Write("Press \"Enter\" to Play Again");
+                        x += 26;
+                    }
+                    else if (x == 8 && y == Heigth / 2 + 2)
+                    {
+                        Console.Write("Press \"Delete\" to Exit");
+                        x += 21;
+                    }
+                    else
+                    {
+                        Console.Write(' ');
+                    }
+                } 
+                Console.WriteLine();
+            }
+            Console.WriteLine(new string(arenaChar, 40));
+            ConsoleKeyInfo keyPress = default(ConsoleKeyInfo);
+            while (true)
+            {
+                if (keyPress.Key == ConsoleKey.Enter || keyPress.Key == ConsoleKey.Delete)
+                    break;
+                keyPress = Console.ReadKey();
+            }
+            if (keyPress.Key == ConsoleKey.Enter)
+            {
+                gameOver = false;
+                Setup();
+                Start();
+            }
+        }
+
         public void Gameover()
         {
             Console.Clear();
-            Console.WriteLine(new string(arenaChar, 20));
-            for (int x = 0; x < Width; x++)
+            Console.WriteLine(new string(arenaChar, 40));
+            for (int y = 0; y < Heigth; y++)
             {
-                if (x == 0 || x == Width - 1)
+                for (int x = 0; x < Width; x++)
                 {
-                    Console.Write(arenaChar);
+                    if (x == 0 || x == Width - 1)
+                    {
+                        Console.Write(arenaChar);
+                    }
+                    else if (x == 8 && y == Heigth / 2 - 2)
+                    {
+                        Console.Write($"You loose. Your Score : {score}");
+                        x += 25;
+                    }
+                    else if (x == 8 && y == Heigth / 2)
+                    {
+                        Console.Write("Press \"Enter\" to Play Again");
+                        x += 26;
+                    }
+                    else if (x == 8 && y == Heigth / 2 + 2)
+                    {
+                        Console.Write("Press \"Delete\" to Exit");
+                        x += 21;
+                    }
+                    else
+                    {
+                        Console.Write(' ');
+                    }
                 }
-                else
-                {
-                    Console.Write(' ');
-                }
+                Console.WriteLine();
             }
-            Console.WriteLine(new string(arenaChar, 20));
-            Console.WriteLine("Game Over");
+            Console.WriteLine(new string(arenaChar, 40));
+            ConsoleKeyInfo keyPress = default(ConsoleKeyInfo);
+            while(true)
+            {
+                if (keyPress.Key == ConsoleKey.Enter || keyPress.Key == ConsoleKey.Delete)
+                    break;
+                keyPress = Console.ReadKey();
+            }
+            if (keyPress.Key == ConsoleKey.Enter)
+            {
+                gameOver = false;
+                Setup();
+                Start();
+            }
         }
     }
 }
