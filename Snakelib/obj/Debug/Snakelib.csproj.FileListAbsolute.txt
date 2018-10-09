@@ -1,5 +1,0 @@
-C:\Users\davom\source\repos\Game\Snakelib\bin\Debug\Snakelib.dll
-C:\Users\davom\source\repos\Game\Snakelib\bin\Debug\Snakelib.pdb
-C:\Users\davom\source\repos\Game\Snakelib\obj\Debug\Snakelib.csproj.CoreCompileInputs.cache
-C:\Users\davom\source\repos\Game\Snakelib\obj\Debug\Snakelib.dll
-C:\Users\davom\source\repos\Game\Snakelib\obj\Debug\Snakelib.pdb
