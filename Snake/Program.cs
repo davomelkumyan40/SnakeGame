@@ -19,7 +19,6 @@ namespace Snake
         private int snakeY;
         private int fruitX;
         private int fruitY;
-        private enum Keys { Up = ConsoleKey.UpArrow, Down = ConsoleKey.DownArrow, Right = ConsoleKey.RightArrow, Left = ConsoleKey.LeftArrow, Stop = 0 }
         private Keys direction = Keys.Stop;
         private int Heigth { get => 20; }
         private int Width { get => 20; }
@@ -27,6 +26,7 @@ namespace Snake
         private char snake = '@';
         private bool gameOver;
         private int score;
+        private char key;
 
         public void Start()
         {
@@ -69,7 +69,6 @@ namespace Snake
             {
                 for (int x = 0; x < Width; x++)
                 {
-                    Random r = new Random();
                     if (x == 0 || x == Width - 1)
                     {
                         Console.Write(arenaChar);
@@ -80,7 +79,7 @@ namespace Snake
                     }
                     else if (x == fruitX && y == fruitY)
                     {
-                        Console.Write("F");
+                        Console.Write("0");
                     }
                     else
                     {
@@ -97,8 +96,6 @@ namespace Snake
             Thread.Sleep(50);
         }
 
-
-        private char key;
         public void Input()
         {
             char key = this.key;
@@ -150,7 +147,7 @@ namespace Snake
                     snakeX--;
                     break;
             }
-            if (snakeX == fruitX || snakeY == fruitY)
+            if (snakeX == fruitX && snakeY == fruitY)
             {
                 score++;
                 fruitX = r.Next(1, Width - 1);
@@ -173,9 +170,21 @@ namespace Snake
 
         public void Gameover()
         {
+            Console.Clear();
             Console.WriteLine(new string(arenaChar, 20));
-
+            for (int x = 0; x < Width; x++)
+            {
+                if (x == 0 || x == Width - 1)
+                {
+                    Console.Write(arenaChar);
+                }
+                else
+                {
+                    Console.Write(' ');
+                }
+            }
             Console.WriteLine(new string(arenaChar, 20));
+            Console.WriteLine("Game Over");
         }
     }
 }
