@@ -15,7 +15,6 @@ namespace Snakelib
         void KeyCheck(char key);
         void Logic();
         bool Win();
-        void Gameover();
-        void Victory();
+        void EndGame();
     }
 }
