@@ -8,10 +8,10 @@ namespace Snakelib
 {
     enum Keys
     {
-        Up = ConsoleKey.UpArrow,
-        Down = ConsoleKey.DownArrow,
-        Right = ConsoleKey.RightArrow,
-        Left = ConsoleKey.LeftArrow,
-        Stop = 0
+        Stop = 0,
+        Up,
+        Down,
+        Right,
+        Left 
     }
 }

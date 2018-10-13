@@ -1,12 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace Snakelib
+namespace Game
 {
-    public class Snake : ISnakeable
+    class Snake : ISnake
     {
 
         public Snake()
@@ -70,6 +71,7 @@ namespace Snakelib
         public void Drawing()
         {
             Console.Clear();
+
             for (int x = 0; x < Width; x++)
             {
                 Console.Write(arenaChar);
@@ -86,8 +88,8 @@ namespace Snakelib
                     }
                     else if (x == snakeX && y == snakeY)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.BackgroundColor = ConsoleColor.Green;
                         Console.Write(snake);
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.Yellow;
@@ -95,9 +97,7 @@ namespace Snakelib
                     else if (x == fruitX && y == fruitY)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.BackgroundColor = ConsoleColor.Blue;
                         Console.Write("O");
-                        Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.Yellow;
                     }
                     else
@@ -107,15 +107,13 @@ namespace Snakelib
                         {
                             if (tailX[i] == x && tailY[i] == y)
                             {
-                                Console.BackgroundColor = ConsoleColor.Blue;
                                 Console.Write(snakeTail);
-                                Console.BackgroundColor = ConsoleColor.Yellow;
                                 noDraw = true;
-                            } 
+                            }
                         }
                         if (!noDraw)
                         {
-                            Console.BackgroundColor = ConsoleColor.Blue;
+                            Console.BackgroundColor = ConsoleColor.Green;
                             Console.Write(' ');
                             Console.BackgroundColor = ConsoleColor.Black;
                         }
@@ -128,7 +126,7 @@ namespace Snakelib
             {
                 Console.Write(arenaChar);
             }
-            Thread.Sleep(40);
+            Thread.Sleep(100);
         }
 
         public void Input()
@@ -294,5 +292,14 @@ namespace Snakelib
                 Start();
             }
         }
+    }
+
+    enum Keys
+    {
+        Up = 0,
+        Down = 1,
+        Right,
+        Left,
+        Stop,
     }
 }
