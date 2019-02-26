@@ -34,7 +34,7 @@ namespace Snakelib
 
         public void Start()
         {
-            while (gameOver != true)
+            while (!gameOver)
             {
                 Drawing();
                 Input();
@@ -62,8 +62,8 @@ namespace Snakelib
             fruitX = rnd.Next(1, Width - 1);
             fruitY = rnd.Next(1, Heigth - 1);
             score = 0;
-            tailX = new int[10];
-            tailY = new int[10];
+            tailX = new int[100];
+            tailY = new int[100];
             tailCount = 0;
         }
 
@@ -87,17 +87,13 @@ namespace Snakelib
                     else if (x == snakeX && y == snakeY)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.BackgroundColor = ConsoleColor.Blue;
                         Console.Write(snake);
-                        Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.Yellow;
                     }
                     else if (x == fruitX && y == fruitY)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.BackgroundColor = ConsoleColor.Blue;
                         Console.Write("O");
-                        Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.Yellow;
                     }
                     else
@@ -107,17 +103,13 @@ namespace Snakelib
                         {
                             if (tailX[i] == x && tailY[i] == y)
                             {
-                                Console.BackgroundColor = ConsoleColor.Blue;
                                 Console.Write(snakeTail);
-                                Console.BackgroundColor = ConsoleColor.Yellow;
                                 noDraw = true;
                             } 
                         }
                         if (!noDraw)
                         {
-                            Console.BackgroundColor = ConsoleColor.Blue;
                             Console.Write(' ');
-                            Console.BackgroundColor = ConsoleColor.Black;
                         }
                     }
                 }
@@ -210,7 +202,7 @@ namespace Snakelib
             }
             for (int i = 1; i < tailX.Length; i++)
             {
-                if (snakeX == tailX[i] && snakeY == tailY[i])
+                if (snakeX == tailX[i] && snakeY == tailY[i] && snakeX != tailX[tailX.Length - 1] || snakeX == tailX[i] && snakeY == tailY[i] && snakeY != tailY[tailY.Length - 1])
                 {
                     gameOver = true;
                 }
